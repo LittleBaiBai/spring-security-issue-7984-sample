@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${uaa.uri}/oauth/token
+      client:
+        registration:
+          b:
+            provider: uaa
+            client-id: ${auth.client-id}
+            client-secret: ${auth.client-secret}
+            authorization-grant-type: client_credentials
+        provider:
+          uaa:
+            issuer-uri: ${uaa.uri}/oauth/token

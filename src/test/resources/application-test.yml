@@ -1,0 +1,6 @@
+uaa:
+  uri: http://localhost:40000/uaa
+
+auth:
+  client-id: test
+  client-secret: test
