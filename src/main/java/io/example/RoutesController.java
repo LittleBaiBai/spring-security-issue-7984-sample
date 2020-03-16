@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import static org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction.clientRegistrationId;
+
 @RestController
 class TestController {
 
@@ -31,6 +33,7 @@ class TestController {
 	Mono<String> endpointA() {
 		return webClient.get()
 		                .uri("/test/b")
+		                .attributes(clientRegistrationId(API_CLIENT_ID))
 		                .retrieve()
 		                .toEntity(String.class)
 						.map(HttpEntity::getBody);
