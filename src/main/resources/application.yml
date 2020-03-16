@@ -6,7 +6,7 @@ spring:
           issuer-uri: ${uaa.uri}/oauth/token
       client:
         registration:
-          b:
+          a:
             provider: uaa
             client-id: ${auth.client-id}
             client-secret: ${auth.client-secret}

@@ -16,15 +16,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RestController
 class TestController {
 
-	private static final String API_CLIENT_ID = "b";
+	private static final String API_CLIENT_ID = "a";
 
 	private final WebClient webClient;
 
 	TestController(ReactiveClientRegistrationRepository clientRegistrationRepository,
-	               @Value("${server.port}") int port) {
+	               @Value("${service-b.url}") String serviceBUrl) {
 		this.webClient = WebClient.builder()
 		                          .filter(getOAuth2FilterFunction(clientRegistrationRepository))
-		                          .baseUrl("http://localhost:" + port)
+		                          .baseUrl(serviceBUrl)
 		                          .build();
 	}
 
@@ -35,11 +35,6 @@ class TestController {
 		                .retrieve()
 		                .toEntity(String.class)
 						.map(HttpEntity::getBody);
-	}
-
-	@GetMapping("/test/b")
-	Mono<String> endpointB() {
-		return Mono.just("Hello Security!");
 	}
 
 	private ExchangeFilterFunction getOAuth2FilterFunction(
