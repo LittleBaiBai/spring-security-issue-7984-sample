@@ -11,6 +11,7 @@ spring:
             client-id: ${auth.client-id}
             client-secret: ${auth.client-secret}
             authorization-grant-type: client_credentials
+            scope: openid
         provider:
           uaa:
             issuer-uri: ${uaa.uri}/oauth/token

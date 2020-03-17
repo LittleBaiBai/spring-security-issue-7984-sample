@@ -20,7 +20,6 @@ scim:
       - openid
       - profile
       - roles
-      - adoption.request
   users:
     - test|test|test@example.org|Test|Test|openid,adoption.request,uaa.admin
 encryption:
